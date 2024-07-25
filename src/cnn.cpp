@@ -39,7 +39,7 @@ int main() {
     assert(train_batch_size >= valid_batch_size && train_batch_size >= test_batch_size); // 设计问题, train 的 batch 必须更大
     assert(valid_batch_size == 1 && test_batch_size == 1); // 设计问题, 暂时只支持这个
     const std::tuple<int, int, int> image_size({224, 224, 3});
-    const std::filesystem::path dataset_path("../../datasets/animals");
+    const std::filesystem::path dataset_path("../datasets/animals");
     const std::vector<std::string> categories({"dog", "panda", "bird"});
 
     // 获取图片
