@@ -10,12 +10,12 @@
 #include "architectures.h"
 
 namespace {
-    void cv_show(const cv::Mat& one_image, const char* info="") {
-        cv::imshow(info, one_image);
-        cv::waitKey(0);
-        cv::destroyAllWindows();
-    }
+void cv_show(const cv::Mat& one_image, const char* info="") {
+    cv::imshow(info, one_image);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
+} // namespace
 
 int main() {
     // 输出不要放在缓冲区, 到时间了及时输出

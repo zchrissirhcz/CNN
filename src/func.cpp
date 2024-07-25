@@ -4,12 +4,12 @@
 
 
 namespace {
-    inline data_type __exp(const data_type x) {
-        if(x >= 88) return FLT_MAX; // 直接返回 float 的最大值, 如果 data_type 换成 double 这个还得改
-        else if(x <= -50) return 0.f;
-        return std::exp(x);
-    }
+inline data_type __exp(const data_type x) {
+    if(x >= 88) return FLT_MAX; // 直接返回 float 的最大值, 如果 data_type 换成 double 这个还得改
+    else if(x <= -50) return 0.f;
+    return std::exp(x);
 }
+} // namespace
 
 
 // 给 batch_size 个向量, 每个向量 softmax 成多类别的概率

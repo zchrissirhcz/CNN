@@ -1,7 +1,4 @@
-#ifndef CNN_DATA_FORMAT_H
-#define CNN_DATA_FORMAT_H
-
-
+#pragma once
 
 // OpenCV
 #include <opencv2/core.hpp>
@@ -51,9 +48,3 @@ public:
     ~Tensor3D() noexcept;
 };
 using tensor = std::shared_ptr<Tensor3D>;
-
-
-
-
-
-#endif //CNN_DATA_FORMAT_H

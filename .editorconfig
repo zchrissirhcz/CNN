@@ -1,0 +1,29 @@
+# https://editorconfig.org/
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+
+[*.{h,hpp,c,cpp}]
+indent_size = 4
+
+[{CMakeLists.*,*.cmake}]
+indent_size = 2
+
+[{Makefile,makefile,*.mk,*.mak}]
+indent_style = tab
+
+[*.{bat,cmd,cmd.*}]
+end_of_line = crlf
+indent_size = 2
+
+[*.{ps1,ps1.*}]
+end_of_line = crlf
+indent_size = 4
+
+[*.{md,markdown}]
+indent_size = 4
+
+[*.{yml,yaml}]
+indent_size = 2

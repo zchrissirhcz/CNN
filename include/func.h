@@ -1,5 +1,4 @@
-#ifndef CNN_FUNC_H
-#define CNN_FUNC_H
+#pragma once
 
 #include "data_format.h"
 
@@ -16,5 +15,3 @@ std::pair<data_type, std::vector<tensor> > cross_entroy_backward(
 
 // 小数变成 string
 std::string float_to_string(const float value, const int precision);
-
-#endif //CNN_FUNC_H

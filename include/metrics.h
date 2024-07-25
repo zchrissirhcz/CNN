@@ -1,5 +1,4 @@
-#ifndef CNN_METRICS_H
-#define CNN_METRICS_H
+#pragma once
 
 // C++
 #include <vector>
@@ -18,7 +17,3 @@ public:
     // 重新开始统计
     void clear();
 };
-
-
-
-#endif //CNN_METRICS_H

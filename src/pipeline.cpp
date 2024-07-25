@@ -10,28 +10,28 @@
 
 
 namespace {
-    void cv_show(const cv::Mat& one_image, const char* info="") {
-        cv::imshow(info, one_image);
-        cv::waitKey(0);
-        cv::destroyAllWindows();
-    }
-
-    bool cv_write(const cv::Mat& source, const std::string save_path) {
-        return cv::imwrite(save_path, source, std::vector<int>({cv::IMWRITE_PNG_COMPRESSION, 0}));
-    }
-
-    cv::Mat rotate(cv::Mat& src, double angle) {
-        // 抄自 https://stackoverflow.com/questions/22041699/rotate-an-image-without-cropping-in-opencv-in-c
-        // 角度最好在正负 15-75 之间, 这个程序还是有问题的
-        cv::Point2f center((src.cols-1)/2.0, (src.rows-1)/2.0);
-        cv::Mat rot = cv::getRotationMatrix2D(center, angle, 1.0);
-        cv::Rect2f bbox = cv::RotatedRect(cv::Point2f(), src.size(), angle).boundingRect2f();
-        rot.at<double>(0,2) += bbox.width/2.0 - src.cols/2.0;
-        rot.at<double>(1,2) += bbox.height/2.0 - src.rows/2.0;
-        cv::warpAffine(src, src, rot, bbox.size());
-        return src;
-    }
+void cv_show(const cv::Mat& one_image, const char* info="") {
+    cv::imshow(info, one_image);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
 }
+
+bool cv_write(const cv::Mat& source, const std::string save_path) {
+    return cv::imwrite(save_path, source, std::vector<int>({cv::IMWRITE_PNG_COMPRESSION, 0}));
+}
+
+cv::Mat rotate(cv::Mat& src, double angle) {
+    // 抄自 https://stackoverflow.com/questions/22041699/rotate-an-image-without-cropping-in-opencv-in-c
+    // 角度最好在正负 15-75 之间, 这个程序还是有问题的
+    cv::Point2f center((src.cols-1)/2.0, (src.rows-1)/2.0);
+    cv::Mat rot = cv::getRotationMatrix2D(center, angle, 1.0);
+    cv::Rect2f bbox = cv::RotatedRect(cv::Point2f(), src.size(), angle).boundingRect2f();
+    rot.at<double>(0,2) += bbox.width/2.0 - src.cols/2.0;
+    rot.at<double>(1,2) += bbox.height/2.0 - src.rows/2.0;
+    cv::warpAffine(src, src, rot, bbox.size());
+    return src;
+}
+} // namespace
 
 
 using namespace pipeline;

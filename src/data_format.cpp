@@ -151,7 +151,7 @@ std::shared_ptr<Tensor3D> Tensor3D::pad(const int padding) const {
 
 Tensor3D::~Tensor3D() noexcept {
     if(this->data != nullptr) {
-        delete this->data;
+        delete[] this->data;
         this->data = nullptr;
         // std::cout << this->name << " 销毁一次\n";
     }

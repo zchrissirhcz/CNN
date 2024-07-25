@@ -7,7 +7,7 @@ include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/include)
 find_package(OpenCV REQUIRED)
 
 
-set(LAYERS_FILES 
+add_library(cnn STATIC
   src/data_format.cpp
   src/pipeline.cpp 
   src/relu.cpp
@@ -21,23 +21,20 @@ set(LAYERS_FILES
   src/alexnet.cpp
   src/dropout.cpp
 )
+target_link_libraries(cnn PUBLIC ${OpenCV_LIBS})
 
 add_executable(train 
-  src/cnn.cpp 
-  ${LAYERS_FILES}
+  src/cnn.cpp
 )
 
 add_executable(inference
   src/inference.cpp
-  ${LAYERS_FILES}
 )
 
 add_executable(gradCAM
   src/grad_cam.cpp
-  ${LAYERS_FILES}
 )
 
-## 设置库文件
-target_link_libraries(train     ${OpenCV_LIBS})
-target_link_libraries(inference ${OpenCV_LIBS})
-target_link_libraries(gradCAM   ${OpenCV_LIBS})
+target_link_libraries(train PUBLIC cnn)
+target_link_libraries(inference PUBLIC cnn)
+target_link_libraries(gradCAM PUBLIC cnn)

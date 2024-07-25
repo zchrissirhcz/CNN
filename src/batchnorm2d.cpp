@@ -8,10 +8,10 @@ using namespace architectures;
 
 
 namespace {
-    inline data_type square(const data_type x) {
-        return x * x;
-    }
+inline data_type square(const data_type x) {
+    return x * x;
 }
+} // namespace
 
 
 BatchNorm2D::BatchNorm2D(std::string _name, const int _out_channels, const data_type _eps, const data_type _momentum)
